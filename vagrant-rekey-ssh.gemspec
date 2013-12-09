@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["dustin@virtualroadside.com"]
   spec.description   = "Automatically secure vagrant boxes with a randomly generated SSH key"
   spec.summary       = "Automatically secure vagrant boxes with a randomly generated SSH key"
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/virtuald/vagrant-rekey-ssh.git"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
