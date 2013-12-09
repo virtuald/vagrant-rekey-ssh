@@ -1,0 +1,22 @@
+---
+en:
+  vagrant_rekey_ssh:  
+    config:
+      enable: |-
+        Enable must be true or false
+
+    info:
+      generating_key: |-
+        Less insecure SSH key not found, generating key
+      key_generated: |-
+        Less insecure SSH key generated and stored at %{path}
+      key_replaced: |-
+        Replaced insecure vagrant key with less insecure key!
+      no_key: |-
+        Insecure vagrant key not present.
+
+    errors:
+      creating_ssh_key: |-
+        Error occurred when creating the ssh key (ssh-keygen returned %{exit_code})
+      invalid_generated_ssh_key: |-
+        Generated SSH key was not in an expected format! Perhaps it was corrupted?
