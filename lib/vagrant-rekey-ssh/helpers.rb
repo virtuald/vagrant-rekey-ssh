@@ -19,6 +19,10 @@ module VagrantPlugins
         end
       end
       
+      def rekey_sentinel_file
+        ::File.join(@machine.data_dir, "rekey_sentinel")
+      end
+      
       def ssh_public_key
         IO.read(ssh_pubkey_path).scan( /^(\S+\s+\S+).*$/ ).last.first
       end

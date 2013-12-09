@@ -1,5 +1,6 @@
 
 require "vagrant-rekey-ssh/helpers"
+require "fileutils"
 
 module VagrantPlugins
   module RekeySSH
@@ -37,6 +38,9 @@ module VagrantPlugins
           elsif result == 2
             raise Errors::ErrorReplacingInsecureKey
           elsif result == 3
+            # store an indicator that the key has been replaced
+            FileUtils.touch(rekey_sentinel_file)
+            
             @machine.ui.info(I18n.t("vagrant_rekey_ssh.info.key_replaced"))
             
             # if the insecure key *was* there, disable the user's and root's password too
@@ -44,6 +48,8 @@ module VagrantPlugins
             # -> we only do this if the insecure key was found, because if it
             #    wasn't then perhaps it's a custom box and we shouldn't mess with it
             @machine.communicate.execute("sudo passwd --delete $USER; sudo passwd --delete root", sudo: false)  
+            
+            
             
           end
           

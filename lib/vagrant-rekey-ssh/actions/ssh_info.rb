@@ -24,8 +24,18 @@ module VagrantPlugins
           # in case we haven't replaced the key yet.
           # -> TODO: only specify the insecure key when we haven't set the
           #    less insecure key on the box.
+          
           if @machine.config.ssh.private_key_path.nil?
-            @machine.config.ssh.private_key_path = [ssh_key_path, @machine.env.default_private_key_path]
+            
+            if ::File.exists?(rekey_sentinel_file)
+              @machine.config.ssh.private_key_path = ssh_key_path
+            end
+            
+            # Vagrant < 1.4 only supports a single ssh key, do this differently
+            #if Vagrant::VERSION <= "1.4.0"
+            #else
+            #  @machine.config.ssh.private_key_path = [ssh_key_path, @machine.env.default_private_key_path]
+            #end
           end
           
         end
