@@ -8,7 +8,7 @@ Rationale
 ---------
 
 All Vagrant boxes come with the same ssh key and passwords installed. This
-means anyone who can ssh into your VM, will be able to authenticate to it
+means anyone who can ssh into your VM will be able to authenticate to it
 if they try the vagrant default credentials. Additionally, vagrant boxes
 come with passwordless sudo privileges, so anyone able to SSH into your 
 box will be able to do whatever they want on it.
@@ -17,7 +17,7 @@ As of Vagrant 1.2.3, for the most part this doesn't matter, because you can
 only access the Vagrant VM from localhost (previous versions allowed access
 from any machine on your local network). However, this becomes *extremely*
 important if you are using a vagrant box that is on a bridged network. If
-your VM is on a bridged network, without other controls in place that means
+your VM is on a bridged network without other controls in place, that means
 *anyone* who has access to your local network can SSH into your VM and get
 root access on it. There are plenty of documented ways of breaking out of a
 VM, so this is clearly a problem that needs to be addressed.
@@ -28,12 +28,12 @@ Since that isn't currently the case, I've created this plugin to help.
 This solution
 -------------
 
-The first time that this plugin is ran, it generates a unique SSH key and
+The first time that this plugin is run, it generates a unique SSH key and
 stores it as `~/vagrant.d/less_insecure_private_key`. Whenever you run the
 `vagrant provision` command, this plugin will run a script to check the
 authorized keys for the vagrant user to determine if the insecure key
-public key is present. If it is present, it will replace the key with the
-public key for the generated public key.
+public key is present. If it is present, it will replace the insecure key
+with the public key for the generated key pair.
 
 Additionally, if the insecure public key is present, it will delete the
 passwords for root and vagrant, so that you cannot login using a password.
