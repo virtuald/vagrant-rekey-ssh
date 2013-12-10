@@ -28,7 +28,11 @@ module VagrantPlugins
           if @machine.config.ssh.private_key_path.nil?
             
             if ::File.exists?(rekey_sentinel_file)
-              @machine.config.ssh.private_key_path = ssh_key_path
+              if Vagrant::VERSION < "1.4.0"
+                @machine.config.ssh.private_key_path = ssh_key_path
+              else
+                @machine.config.ssh.private_key_path = [ssh_key_path]
+              end
             end
             
             # Vagrant < 1.4 only supports a single ssh key, do this differently
