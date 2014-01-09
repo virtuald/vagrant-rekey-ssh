@@ -23,6 +23,7 @@ module VagrantPlugins
           hook.before(Vagrant::Action::Builtin::ConfigValidate, ActionSSHInfo)
           hook.before(Vagrant::Action::Builtin::GracefulHalt, ActionSSHInfo)
           hook.before(Vagrant::Action::Builtin::SSHExec, ActionSSHInfo)
+          hook.before(Vagrant::Action::Builtin::SSHRun, ActionSSHInfo)
           
           hook.after(Vagrant::Action::Builtin::Provision, ActionSecureBox)
         end
