@@ -31,7 +31,7 @@ module VagrantPlugins
               if Vagrant::VERSION < "1.4.0"
                 @machine.config.ssh.private_key_path = ssh_key_path
               else
-                @machine.config.ssh.private_key_path = [ssh_key_path]
+                @machine.config.ssh.private_key_path = [ssh_key_path, @machine.env.default_private_key_path]
               end
             end
             
