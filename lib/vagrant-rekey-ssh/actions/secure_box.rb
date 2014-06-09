@@ -47,7 +47,7 @@ module VagrantPlugins
             # -> this prevents the user from logging in using 'vagrant'
             # -> we only do this if the insecure key was found, because if it
             #    wasn't then perhaps it's a custom box and we shouldn't mess with it
-            @machine.communicate.execute("sudo passwd --delete $USER; sudo passwd --delete root", sudo: false)  
+            @machine.communicate.execute("sudo passwd -d $USER; sudo passwd -d root", sudo: false)
             
             
             
