@@ -13,7 +13,7 @@ en:
       key_replaced: |-
         Replaced insecure vagrant key with less insecure key!
       no_key: |-
-        Insecure vagrant key not present.
+        Check for insecure vagrant key: OK (not present)
 
     errors:
       creating_ssh_key: |-
