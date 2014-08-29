@@ -17,6 +17,6 @@ en:
 
     errors:
       creating_ssh_key: |-
-        Error occurred when creating the ssh key (ssh-keygen returned %{exit_code})
+        Error occurred when creating the ssh key (%{error_message})
       invalid_generated_ssh_key: |-
         Generated SSH key was not in an expected format! Perhaps it was corrupted?

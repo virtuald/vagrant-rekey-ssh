@@ -69,14 +69,12 @@ Compatibility
 -------------
 
 I've only tested this on Vagrant 1.3.5 using the Virtualbox provider on Ubuntu
-and OSX. Let me know if it works on earlier versions of Vagrant, and I'll put
-that here.
+and OSX. In addition, it was tested on Windows 8.1 with Vagrant 1.6.3 and the
+VirtualBox provider. Let me know if it works on earlier versions of Vagrant,
+and I'll put that here.
 
 Known Issues
 ------------
-
-This isn't going to work on a Vagrant VM that is running a non-unix operating
-system.
 
 I haven't figured out a generic way to override a machine's configuration
 without hooking specific actions, which results in the following bugs that
