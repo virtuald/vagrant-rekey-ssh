@@ -1,3 +1,5 @@
+OBSOLETE: The functionality this plugin provides is available in Vagrant 1.7+
+
 vagrant-rekey-ssh
 =================
 
