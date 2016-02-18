@@ -13,6 +13,8 @@ module VagrantPlugins
           key = SSHKey.generate(:comment => "vagrant less insecure private key")
           begin
             File.write(ssh_key_path, key.private_key)
+            # Fix ssh key permissions on Unix systems
+            File.chmod(600, ssh_key_path) if (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) == nil
             File.write(ssh_pubkey_path, key.ssh_public_key)
           rescue => exc
             raise Errors::ErrorCreatingSshKey, error_message: exc.message
